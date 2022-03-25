@@ -1,0 +1,654 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300@400@500;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.light-theme{
+    --body-background-color:hsl(0, 0%, 98%);
+    --navbar-background-color:hsl(203, 89%, 53%);
+    --navbar-button-hover-background-color:hsl(203, 100%, 67%);
+    --right-section-background-color:hsl(0, 0%, 100%);
+    --navbar-shadow-color:hsl(213, 20%, 89%);
+}
+
+.dark-theme{
+    --body-background-color:aquamarine;
+    --navbar-background-color:yellow;
+    --navbar-button-hover-background-color:aqua;
+}
+
+.flex-row-c{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* align-items: center; */
+    
+}
+
+.flex-row{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.none{
+    display: none;
+}
+
+body{
+    width:100vw;
+    height: 100vh;
+    background-color: var(--body-background-color);
+    padding: 5vh 15vw;
+    overflow:hidden;
+
+    font-family: 'Ubuntu', sans-serif;
+}
+
+/* .x{
+    background-color: aliceblue;
+    /* width:1000px;
+    height: 600px; */
+
+
+.navbar{
+    display:block;
+    width:8vw;
+    height:90vh;
+    background-color: var(--navbar-background-color);
+    /* background-color: red; */
+    border-radius: 1.5rem;
+    overflow: hidden;
+
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+}
+
+
+
+.list{
+    list-style-type: none;
+    width: 100%;
+    height: 100%;
+    /* background-color: bisque; */
+}
+
+.list__section1{
+    /* background-color: green; */
+    width:40%;
+    height: 67vh;
+
+    justify-content: start;
+}
+
+.list__section2{
+    /* background-color: blue; */
+    padding-top: 50%;
+    height:10vh;
+    width:40%;
+}
+
+.list__item{
+    /* background-color: yellow; */
+    padding: 30% 30%;
+    margin-bottom: 70%;
+    border-radius: 0.5rem;
+    /* border: 2px solid red; */
+    /* width:100px;
+    height: 100px; */
+}
+
+.list__item:hover{
+    background-color: var(--navbar-button-hover-background-color);
+}
+
+.list__item > svg{
+    fill:hsl(202, 62%, 86%);
+    width:2.7vh;
+    height: 2.7vh;
+}
+
+.list__section2 > li > svg{
+    
+    width:3.8vh;
+    height:3.8vh;
+}
+
+.list__section2 > li:hover{
+    padding: 22% 23%;
+}
+
+.logout-icon{
+    fill:hsl(202, 62%, 86%);
+}
+
+/* .list__text{
+    width:40%;
+    height: 20px;
+    color:hsl(202, 62%, 86%);
+} */
+
+
+
+
+.dashboard-section{
+    display:block;
+    /* background-color: blueviolet; */
+    overflow: hidden;
+    width:41vw;
+    height:90vh;
+    border-radius: 1rem 1rem 0 1rem;
+    font-family: 'Ubuntu', sans-serif;
+    
+    /* box-shadow: 0px 3px 5px 0.5px var(--navbar-shadow-color); */
+}
+
+
+.user-info-section{
+    width:100%;
+    height:8.5%;
+    padding-left: 4.2%;
+    background-color: var(--right-section-background-color);
+
+    justify-content: start;
+    font-size: 1rem;
+
+    margin-bottom: 0.3%;
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+}
+
+.user-info-section__title{
+    background-color: hsl(0, 0%, 100%);
+    width:100%;
+    height: 8%;
+    border-radius: 0.7rem 0.7rem 0 0;
+    /* border-bottom: 2.5px solid hsl(201, 22%, 79%); */
+    padding-left: 7%;
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+}
+
+.user-info-section__user{
+    background-color:hsl(0, 0%, 100%);
+    width:100%;
+    height: 8.25%;
+    /* border-radius: 0.4rem; */
+    padding: 7%;
+    /* padding-left: 7%;
+    padding-right: 7%;
+    padding-top:7%; */
+    /* margin-bottom: 2%; */
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+
+    justify-content: start;
+}
+.user-info-section__pic{
+    width:3.5vw;
+    /* height: 100%; */
+    /* background-color: blueviolet; */
+}
+.user-info-section__image{
+    border-radius: 50%;
+    width:5.35vh;
+    height: 5.35vh;
+}
+
+.user-info-section__name{
+    font-weight: 700;
+    padding-bottom: 1%;
+    
+}
+
+.user-info-section__username{
+    font-weight: 300;
+    color:hsl(240, 1%, 61%);
+}
+
+/* --------------------- */
+/* POST INPUT SECTION */
+.post-input-section{
+    width: 100%;
+    height: 13%;
+    /* background-color: bisque; */
+    border-radius: 0 0 1rem 1rem;
+    
+    background-color: var(--right-section-background-color);
+
+    box-shadow: 0px 3px 5px 0.5px var(--navbar-shadow-color);
+    
+    
+}
+
+.post-input-section__input{
+    width: 100%;
+    height: 4vw;
+    padding: 2%;
+    padding-left: 5%;
+    
+    /* padding-bottom: 5%; */
+    background-color: var(--right-section-background-color);
+    border:none;
+    outline: none;
+    text-align: start;
+    font-size: 1rem;
+
+    
+}
+
+.post-input-section__input:active, .post-input-section__input:hover{
+    border:none;
+    outline:none;
+}
+
+.j{
+    position: relative;
+}
+
+.post-input-section__button{
+    cursor:pointer;
+    display: block;
+    background-color: var(--navbar-background-color);
+    border: none;
+    outline: none;
+    /* margin-bottom: 2vh; */
+    width:16%;
+    height: 2.1vw;
+    border-radius: 0.3rem;
+
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+    color:#ffffff;
+
+    position:relative;
+    left: 33vw;
+    bottom: 0.6vw;
+    font-size: 1rem;
+}
+
+
+
+/* LAST POSTS */
+
+.title-section{
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    /* background-color: yellow; */
+    display: block;
+    padding: 4.5% 4.5%;
+}
+
+/* SCROLLBAR */
+.scroll-bar{
+    width:100%;
+    height: 80%;
+    /* background-color: var(--right-section-background-color); */
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+    overflow: scroll;
+    /* border-radius: none; */
+}
+
+.scroll-bar::-webkit-scrollbar {
+    padding-top: 50px;
+    width: 0.5vw;
+    height: 90%;
+}
+
+
+.scroll-bar::-webkit-scrollbar-track {
+    background-color: rgb(238, 232, 232);
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    padding-top: 20px;
+    background-color: rgb(211, 210, 210);
+    border-radius: 1rem;
+}
+
+
+/* POST */
+.post{
+    background-color: var(--right-section-background-color);
+    /* background-color: yellow; */
+    border-radius: 1rem;
+    padding: 3% 4.5%;
+    margin-bottom: 3%;
+    /* border: 2px solid red; */
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+}
+
+.post-s1{
+   padding-bottom: 2%;
+   /* background-color: antiquewhite; */
+   /* padding-top: 2%; */
+}
+
+.post-s2{
+    /* background-color: rgb(63, 134, 134); */
+    width: 94%;
+    height: 6.8vh;
+    padding-left: 2%;
+    /* height: 120%; */
+    /* justify-content: start; */
+    align-items: flex-start;
+}
+
+.post__name, .post__username{
+    font-size: 1rem;
+    /* text-align: start; */
+}
+
+.post__name{
+    font-weight: 700;
+    padding-bottom: 1%;
+}
+
+.post__username{
+    font-weight: 300;
+    color:hsl(240, 1%, 61%);
+}
+
+.post__date{
+    font-size: 1rem;
+    font-weight: 400;
+    color:hsl(240, 1%, 61%);
+}
+
+.post-s4{
+    /* width: 25%; */
+    /* background-color: aqua; */
+    justify-content: end;
+}
+
+
+/* FALTAAAAAAAAAAA */
+/* .heart-icon-unselected{
+    fill:rgb(10, 224, 82);
+} */
+
+.post__number{
+    width:auto;
+    padding-left: 2%;
+    padding-right: 2%;
+    /* background-color: aquamarine; */
+    text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.right-section{
+    display:block;
+    /* background-color: blueviolet; */
+    width:16vw;
+    height:90vh;
+    border-radius: 0.85rem;
+    font-size: 1rem;
+}
+
+
+.other-users-section{
+    width:100%;
+    height:100%;
+    /* background-color: aqua; */
+}
+
+.other-users-section__title{
+    background-color: var(--right-section-background-color);
+    width:100%;
+    height: 8%;
+    border-radius: 0.7rem 0.7rem 0 0;
+    /* border-bottom: 2.5px solid hsl(201, 22%, 79%); */
+    padding-left: 10%;
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+}
+
+.other-users-section__user{
+    background-color:var(--right-section-background-color);
+    width:100%;
+    height: 8.7%;
+    /* border-radius: 0.4rem; */
+    padding: 7%;
+    /* padding-left: 7%;
+    padding-right: 7%;
+    padding-top:7%; */
+    /* margin-bottom: 2%; */
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 400;
+
+    justify-content: start;
+    /* box-shadow: 0px 3px 5px 0.5px var(--navbar-shadow-color); */
+}
+.other-users-section__pic{
+    width:3.5vw;
+    /* height: 100%; */
+    /* background-color: blueviolet; */
+}
+.other-users-section__image{
+    border-radius: 50%;
+    width:5.5vh;
+    height: 5.5vh;
+}
+
+.other-users-section__name{
+    font-weight: 700;
+    padding-bottom: 1%;
+    
+}
+
+.other-users-section__username{
+    font-weight: 300;
+    color:hsl(240, 1%, 61%);
+}
+
+/* SCROLLBAR-RIGHT */
+.scroll-bar-right{
+    width:100%;
+    height: 92%;
+    background-color: var(--right-section-background-color);
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+    overflow:scroll;
+    
+    border-radius: 0 0 0 1rem;
+}
+
+.scroll-bar-right::-webkit-scrollbar {
+    padding-top: 50px;
+    width: 0.3vw;
+    height: 90%;
+}
+
+
+.scroll-bar-right::-webkit-scrollbar-track {
+    background-color: rgb(238, 232, 232);
+   
+}
+
+.scroll-bar-right::-webkit-scrollbar-thumb {
+    padding-top: 20px;
+    background-color: rgb(197, 197, 197);
+    border-radius: 1rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* -------- PROFILE HTML ------------- */
+.profile{
+    background-color: bisque;
+    width:41vw;
+    height:90vh;
+    /* padding: 1% 0%; */
+    background-color: var(--right-section-background-color);
+    
+    box-shadow: 0px 5px 5px 0.5px var(--navbar-shadow-color);
+    border-radius: 1rem 1rem 0 0;
+
+    font-size: 1rem;
+}
+
+.profile__header{
+    /* background-color: aquamarine; */
+    width:100%;
+    padding: 1.5%;
+    justify-content: flex-start;
+}
+
+.liked-section__arrow > svg{
+    width: 5vh;
+    height: 2.55vh;
+    padding-right: 0.9vw;
+}
+
+.profile__info{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.profile__image{
+    width: 17vh;
+    height: 17vh;
+    border-radius: 50%;
+    outline: 0.22rem solid var(--right-section-background-color);
+    position: absolute;
+    top:14vh;
+    left: 1.2vw;
+}
+
+.profile__bg{
+    width: 100%;
+    height: 22vh;
+}
+
+.profile__edit-section{
+    /* background-color: #ffffff; */
+    padding: 1% 2%;
+    justify-content: end;
+}
+
+.profile__edit-section--without{
+    padding: 3.5% 2%;
+}
+
+.profile__edit-button{
+    cursor: pointer;
+    background-color: transparent;
+    display: block;
+    width: 14vh;
+    height: 4.2vh;
+    border-radius: 1rem;
+    justify-content: end;
+    border:2px solid hsl(240, 2%, 84%);
+
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.profile__info-section{
+    /* background-color: bisque; */
+    padding: 5% 3% 1.5% 3%;
+    /* border-bottom: 2px solid var(--navbar-shadow-color); */
+    /* align-items: flex-end; */
+}
+
+/* .profile__info-section:nth-child(4){
+    align-self:flex-end;
+} */
+
+.profile__name{
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 0.5%;
+}
+
+.profile__username{
+    margin-bottom: 1.5%;
+}
+
+.profile__bio{
+    margin-bottom: 1.2%;
+}
+
+.profile__date{
+    text-align: end;
+}
+
+
+/* .profile__buttons{
+    padding-left: 10%;
+} */
+
+.profile__button{
+    cursor: pointer;
+    /* background-color: ; */
+    width:100%;
+    height: 3.5vh;
+    border: none;
+    background-color: var(--right-section-background-color);
+    /* border-radius: 0.7rem 0.7rem 0 0; */
+    /* border-bottom: 2.5px solid hsl(201, 22%, 79%); */
+    /* text-align: start; */
+    margin-bottom: 1%;
+    font-family: 'Ubuntu', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+
+    box-shadow: 0px 1px 1px 0.5px var(--navbar-shadow-color);
+}
+
+.profile__posts{
+    display: block;
+    background-color: bisque;
+    padding-top:2% ;
+    width:100%;
+    height:15.5vw;
+}
+
+
+
+
+
+/* EDIT SECTION -- HTML */

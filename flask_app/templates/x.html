@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>DASHBOARD-USER</h1>
+    
+    <p>{{ user.name }}</p>
+    <p>{{ user.username }}</p>
+
+
+    <h2>DASHBOARD-POSTS</h2>
+    {% for p in posts %}
+    <div>
+        <p>{{ p.name }}</p>
+        <p>@{{ p.username }}</p>
+        <p>{{ p.created_at }}</p>
+        <p>{{ p.content }}</p>
+        <p>{{ p.id }}</p>
+
+        <p><a href="/post/{{p.id}}">View</a></p>
+        <p>-----------------------</p>
+    </div>
+    {% endfor %}
+    
+
+    {% for u in users %}
+    <div>
+        <p>{{ u.name }}</p>
+        <p>@{{ u.username }}</p>
+    </div>
+    {% endfor %}
+
+
+
+    
+    <div>
+        <img src="{{ url_for('static', filename='assets/images/'+user.profile_image) }}" alt="img-fluid">
+    </div>
+    <div>
+        <img src="{{ url_for('static', filename='assets/images/'+user.bg_image) }}" alt="img-fluid">
+    </div>
+
+ 
+
+</body>
+</html>

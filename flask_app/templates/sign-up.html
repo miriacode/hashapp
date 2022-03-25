@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+    <title>SignUp</title>
+</head>
+<body>
+    <main>
+        <section>
+            <div>
+                <img src="#" alt="hashapp-logo">
+            </div>
+            <h2>Welcome Back!</h2>
+            <p>To keep connected with us please login with your personal info, please login with your personal info</p>
+            <form action="/sign_in" method="post">
+                <input type="submit" value="Sign In">
+            </form>
+        </section>
+        <section>
+            <h2>Create Account</h2>
+            <form action="/register" method="post">
+                <input type="text" name="name" id="name" placeholder="Name">
+                <input type="text" name="username" id="username" placeholder="Username">
+                <input type="text" name="email" id="email" placeholder="Email">
+                <input type="password" name="password" id="password" placeholder="Password">
+                <input type="password" name="confirm" id="confirm" placeholder="Confirm password">
+                <input type="submit" value="Sign Up"> 
+            </form>
+        </section>
+    </main>
+</body>
+</html>
