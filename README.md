@@ -11,6 +11,16 @@
 - El usuario puede ver los usuarios que también utilizan la aplicación y sus respectivos perfiles.
 - El usuario puede actualizar su propio perfil
 
+## Tecnologías utilizadas 👩‍💻
+Este proyecto fue desarrollado utilizando las siguientes tecnologías:
+
+###Front-end
+- CSS
+
+###Back-end
+- Python
+- Flask
+- MySQL
 
 ## License 🗒
 This project is under the [MIT license](https://github.com/miriacode/hashapp/blob/main/LICENSE)
