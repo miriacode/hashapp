@@ -14,10 +14,10 @@
 ## Tecnologías utilizadas 👩‍💻
 Este proyecto fue desarrollado utilizando las siguientes tecnologías:
 
-###Front-end
+### Front-end
 - CSS
 
-###Back-end
+### Back-end
 - Python
 - Flask
 - MySQL
