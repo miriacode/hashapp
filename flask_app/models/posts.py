@@ -1,8 +1,10 @@
 from re import S
-from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import SqlConnection
 from flask import flash
 
 class Post:
+    conexion = SqlConnection()
+
     def __init__(self,data):
         self.id = data['id']
         self.content = data['content']
@@ -19,8 +21,14 @@ class Post:
     @classmethod
     def create_post(cls, data):
         query = "INSERT INTO posts (content, owner_id) VALUES (%(content)s, %(owner_id)s)"
-        new_post_id = connectToMySQL('hashapp_schema').query_db(query, data)
-        return new_post_id
+        if not cls.conexion.ejecutar(query, data):
+            cls.conexion.rollback()
+            return False
+        query = f'select id from posts order by id desc'
+        ids = cls.conexion.consulta_asociativa(query)
+        if ids:
+            return ids[0]['id']
+        return False
 
 
 
@@ -28,7 +36,7 @@ class Post:
     # @classmethod
     # def get_all_posts(cls):
     #     query = "SELECT * FROM posts"
-    #     result = connectToMySQL('hashapp_schema').query_db(query)
+    #     result = SqlConnection('hashapp_schema').query_db(query)
     #     posts = []
     #     for r in result:
     #         post = cls(r)
@@ -38,7 +46,7 @@ class Post:
     @classmethod
     def get_all_posts_with_info(cls):
         query = "SELECT posts.id, name, username, profile_image, content, posts.created_at, owner_id FROM users INNER JOIN posts ON users.id = owner_id ORDER BY posts.id DESC;"
-        result = connectToMySQL('hashapp_schema').query_db(query)
+        result = cls.conexion.consulta_asociativa(query)
         print('////////////////////////////////////////////')
         print(result)
         return result
@@ -60,7 +68,7 @@ class Post:
     #     #data = {"id": "1"}
     #     print(data)
     #     query = "SELECT name, username, content, posts.created_at FROM users LEFT JOIN posts ON users.id = owner_id WHERE posts.id = %(id)s"
-    #     result = connectToMySQL('hashapp_schema').query_db(query, data)
+    #     result = SqlConnection('hashapp_schema').query_db(query, data)
     #     print(result)
     #     #tttttttttttttt     pt = result[0]
     #     #Changing date format
@@ -75,7 +83,7 @@ class Post:
         #data = {"id": "1"}
         print(data)
         query = "SELECT * FROM posts WHERE id = %(id)s"
-        result = connectToMySQL('hashapp_schema').query_db(query, data)
+        result = cls.conexion.consulta_asociativa(query, data)
         print(result)
         pt = result[0]
         #Changing date format

@@ -1,4 +1,4 @@
-from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.config.mysqlconnection import SqlConnection
 import re
 
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
@@ -28,14 +28,37 @@ class User:
     #CREATE
     @classmethod
     def create_user(cls, data):
-        query = "INSERT INTO users (name, username, email, password, bio, profile_image, bg_image) VALUES (%(name)s, %(username)s, %(email)s, %(password)s, %(bio)s, %(profile_image)s, %(bg_image)s)"
-        new_user_id = connectToMySQL('hashapp_schema').query_db(query, data)
-        return new_user_id
+        conexion = SqlConnection()
+
+        fields = [
+            'name', 'username', 'email', 'password', 'bio', 'profile_image', 'bg_image'
+        ]
+        query = "INSERT INTO users\n"
+        inserts = ''
+        values = ''
+        for field in fields:
+            if field in data and data[field]:
+                inserts += f"{field}, "
+                values += f'"{data[field]}", '
+        inserts = inserts[:-2]
+        values = values[:-2]
+        query += f'({inserts}) values ({values})'
+        print(query)
+        if not (conexion.ejecutar(query)):
+            conexion.rollback()
+            return False
+        conexion.commit()
+        query = f'select id from users order by id desc'
+        ids = conexion.consulta_asociativa(query)
+        if ids:
+            return ids[0]['id']
+        return False
 
 
     #VALIDATE
     @staticmethod
     def validate_user(user):
+        conexion = SqlConnection()
         #METERLE AJAX!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         is_valid = True
         #Check if the first name has more than 2 characters
@@ -55,13 +78,13 @@ class User:
             is_valid = False
         #Check if the email already exists
         query = "SELECT * FROM users WHERE email = %(email)s"
-        results = connectToMySQL('hashapp_schema').query_db(query, user)
+        results = conexion.consulta_asociativa(query, user)
         if len(results) >= 1:
             flash('Email has been already registered', 'register')
             is_valid = False
         #Check if the username is in use
         query = "SELECT * FROM users WHERE username = %(username)s"
-        results = connectToMySQL('hashapp_schema').query_db(query, user)
+        results = conexion.consulta_asociativa(query, user)
         if len(results) >= 1:
             flash('Username is already in use', 'register')
             is_valid = False
@@ -72,8 +95,9 @@ class User:
     #READ (ONE) (By email) 
     @classmethod
     def get_by_email(cls, data):
+        conexion = SqlConnection()
         query = "SELECT * FROM users WHERE email = %(email)s"
-        result = connectToMySQL('hashapp_schema').query_db(query, data)
+        result = conexion.consulta_asociativa(query, data)
         if len(result) < 1:
             return False
         else :
@@ -85,16 +109,18 @@ class User:
     #READ (ONE) (By ID)
     @classmethod
     def get_user_by_id(cls, data):
+        conexion = SqlConnection()
         query = "SELECT * FROM users WHERE id = %(id)s"
-        result = connectToMySQL('hashapp_schema').query_db(query, data)
+        result = conexion.consulta_asociativa(query, data)
         usr = result[0]
         user = cls(usr)
         return user
 
     @classmethod
     def get_all_users(cls):
+        conexion = SqlConnection()
         query =" SELECT * FROM users"
-        results = connectToMySQL('hashapp_schema').query_db(query)
+        results = conexion.consulta_asociativa(query)
         users = []
         for user in results:
             users.append(cls(user))
@@ -103,8 +129,9 @@ class User:
 
     @classmethod
     def get_user_by_username(cls, data):
+        conexion = SqlConnection()
         query = "SELECT * FROM users WHERE username = %(username)s"
-        result = connectToMySQL('hashapp_schema').query_db(query, data)
+        result = conexion.consulta_asociativa(query, data)
         usr = result[0]
         user = cls(usr)
         return user
@@ -114,8 +141,9 @@ class User:
     #UPDATE 
     @classmethod
     def update_user(cls, form):
+        conexion = SqlConnection()
         query = "UPDATE users SET name=%(name)s, bio=%(bio)s, bg_image=%(bg_image)s, profile_image=%(profile_image)s WHERE users.id=%(id)s"
-        result = connectToMySQL('hashapp_schema').query_db(query, form)
+        result = conexion.consulta_asociativa(query, form)
         return result
     #READ
     # @classmethod
